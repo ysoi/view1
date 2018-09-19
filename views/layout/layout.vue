@@ -5,6 +5,7 @@
     </div>
     <div class="nav">
       <el-menu
+
         class="el-menu-vertical-demo menu"
         background-color="#252525"
         text-color="#fff"
@@ -17,10 +18,14 @@
           </template>
           <el-menu-item-group>
             <template slot="title">用户管理</template>
+
             <el-menu-item index="/layout/index">首页</el-menu-item>
             <el-menu-item index="/login">登录</el-menu-item>
+            <el-menu-item index="/layout/userEdit">修改个人信息</el-menu-item>
             <el-menu-item index="/layout/users">用户管理</el-menu-item>
+
           </el-menu-item-group>
+
           <el-menu-item-group title="用户列表">
             <el-menu-item index="1-3">选项3</el-menu-item>
           </el-menu-item-group>
@@ -55,8 +60,15 @@
         name: "layout"
     }
 </script>
+<style>
+
+ .nav .menu {
+    border-right:none;
+  }
+</style>
 
 <style scoped>
+
   .layout .header{
     margin-left:200px;
     height:100px;
@@ -75,8 +87,8 @@
   background:rgb(30,30,30);
     overflow:hidden;
 
-
   }
+
   .layout .main-content{
     margin-left:200px;
     padding:10px;

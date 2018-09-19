@@ -1,14 +1,15 @@
 <template>
   <div class="container">
     <h1 class="title">欢迎来到云书后台管理系统</h1>
+    <h2 id="h2" ref="title">标题</h2>
      <div class="login-box">
       <h1 class="login-box-title">登录</h1>
-       <el-form ref="form" :model="form" label-width="80px" class="form">
-         <el-form-item label="用户名" >
+       <el-form ref="form" :model="form" label-width="80px" class="form" :rules="rules">
+         <el-form-item label="用户名" prop="username">
            <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
          </el-form-item>
-         <el-form-item label="密码">
-           <el-input v-model="form.password" placeholder="请输入密码" type="password"></el-input>
+         <el-form-item label="密码" prop="password">
+           <el-input v-model="form.password" placeholder="请输入密码" type="password" @keyup.enter.native="validateHandleLogin"></el-input>
          </el-form-item>
          <el-form-item>
           <el-button type="primary" @click="handleLogin" class="login-btn" :loading="isLoading">登录</el-button>
@@ -23,10 +24,28 @@
     export default {
         name: "login",
       data(){
+          const validatorUsername=(rule,value,callback)=>{
+            if(!value){
+              callback(new Error('用户名不对'))
+            }else{
+              callback();
+            }
+          };
+          const validatorPassword=( rule,value,callback)=>{
+            if(value&&value.length>=5){
+              callback();
+            }else{
+              callback(new Error('用户密码不对'));
+            }
+          };
           return{
             form:{
               username:'',
               password:'',
+            },
+            rules:{
+             username:[{validator:validatorUsername,trigger:'blur'}],
+             password:[{validator:validatorPassword,trigger:'blur'}]
             },
             isLoading:false
           }
@@ -52,7 +71,32 @@
             })
 
 
+          },
+        validateHandleLogin(){
+          this.$refs['form'].validate((valid) => {
+            if (valid) {
+             this.handleLogin();
+            } else {
+
+              return false;
+            }
+          });
+        }
+      },
+      created(){
+
+          this.$nextTick(()=>{
+            let h2=this.$refs.title;
+            console.log(h2);
+          })
+
+          let template={
+            'template':'<h1>我是组件内容<h1>'
           }
+      },
+      mounted(){
+          let h2=this.$refs.title;
+          console.log(h2);
       }
     }
 </script>

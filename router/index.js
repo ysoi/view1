@@ -6,7 +6,9 @@ const components= {
   login: () => import('@/views/login/login'),
   layout:()=>  import('@/views/layout/layout'),
   index: ()=>  import('@/views/index/index'),
-  users:()=>   import('@/views/users/index')
+  users:()=>   import('@/views/users/index'),
+  upload:()=>  import('@/views/upload/upload'),
+  userEdit:()=> import('@/views/userEdit/index')
 
 }
 export default new Router({
@@ -41,6 +43,22 @@ export default new Router({
           meta:{
             title:'用户'
           }
+        },
+        {
+          path:'upload',
+          name:'upload',
+          component:components.upload,
+          meta:{
+            title:'上传'
+          }
+        },
+        {
+          path:'userEdit',
+          name:'userEdit',
+          meta:{
+            title:'修改个人信息'
+          },
+          component:components.userEdit
         }
 
       ]
