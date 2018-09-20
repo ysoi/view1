@@ -2,7 +2,7 @@
     <div>
       <h1>修改个人信息</h1>
       <div class="form-wrap">
-        <el-form :model="formData" size="small" label-width="80px" >
+        <el-form :model="formData" size="small" label-width="80px" label-position="left">
           <el-form-item label="用户名">
             <el-input v-model="formData.username"></el-input>
           </el-form-item>
@@ -18,7 +18,9 @@
           <el-form-item label="各性签名" >
             <el-input v-model="formData.desc"></el-input>
           </el-form-item>
-
+          <el-form-item>
+            <el-button @click="handleClick" type="primary">保存更改</el-button>
+          </el-form-item>
         </el-form>
       </div>
 
@@ -35,20 +37,45 @@
         data(){
           return {
             formData:{
-              username:'',
-              nickname:'',
-              email:'',
               avatar:'',
-              desc:''
+              desc:''    ,
+              email:''   ,
+              nickname:'',
+              username:'',
             }
           }
+        },
+      methods:{
+          initData(){
+            this.formData={
+              ...this.$store.state.userInfo
+            }
+          },
+        upLoadSuccess(){
+
+        },
+        //resfulAPI接口规范 put 修改数据
+        handleClick(){
+          this.$axios.put('/user/userInfo',this.formData).then(res=>{
+            console.log(res);
+            if(res.code==200){
+              let userInfo=res.data;
+              this.$store.commit('CHANGE_USERINFO',userInfo);
+              this.initData();
+              this.$message.success(res.msg);
+            }
+          })
         }
+      },
+      created(){
+          this.initData()
+      }
     }
 </script>
 
 <style scoped>
   .form-wrap{
-    margin-left:20px;
+    margin-top:20px;
     width:600px;
   }
 </style>

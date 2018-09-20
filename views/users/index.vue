@@ -18,8 +18,8 @@
             label="个性签名"
             width="180">
           </el-table-column>
-          <el-table-column
             prop="email"
+          <el-table-column
             label="邮箱"
             width="180"
           >
@@ -42,6 +42,13 @@
             </template>
           </el-table-column>
         </el-table>
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :total="1000"
+          current-change="changePage"
+        >
+        </el-pagination>
       </div>
 
     </div>
@@ -52,7 +59,10 @@
       name: "index",
       data() {
         return {
-          tableData: []
+          tableData: [],
+          count:0,
+          page:0,
+          total:0
         }
       },
 
@@ -86,6 +96,10 @@
               message: '已取消删除'
             });
           })
+
+        },
+        changePage(page){
+
         }
       },
       created() {

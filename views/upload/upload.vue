@@ -17,8 +17,12 @@
       <input type="file" name="file" @change="handleImage">
       <div>
         <img :src="url">
-      </div>
 
+      </div>
+      <h1>选择框的封装测试</h1>
+       <div>
+         <checkBox></checkBox>
+       </div>
 
 
   </div>
@@ -28,6 +32,7 @@
 
 <script>
   import axios from "axios";
+  import checkBox from '@/components/checkBox';
     export default {
         name: "upload",
         data(){
@@ -37,6 +42,9 @@
 
           }
         },
+      components:{
+          checkBox
+      },
         methods:{
           getToken(){
             axios.get("http://upload.yaojunrong.com/getToken").then(res=>{

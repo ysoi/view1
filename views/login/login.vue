@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title">欢迎来到云书后台管理系统</h1>
-    <h2 id="h2" ref="title">标题</h2>
+
      <div class="login-box">
       <h1 class="login-box-title">登录</h1>
        <el-form ref="form" :model="form" label-width="80px" class="form" :rules="rules">
@@ -58,6 +58,7 @@
               console.log(res);
               if(res.code == 200){
                 this.$message.success('登录成功');
+                this.$store.commit('CHANGE_USERINFO',res.data);
                 setTimeout(()=>{
                   this.$router.push('/layout/index');
                 },2000)
@@ -85,18 +86,18 @@
       },
       created(){
 
-          this.$nextTick(()=>{
-            let h2=this.$refs.title;
-            console.log(h2);
-          })
-
-          let template={
-            'template':'<h1>我是组件内容<h1>'
-          }
+          // this.$nextTick(()=>{
+          //   let h2=this.$refs.title;
+          //   console.log(h2);
+          // })
+          //
+          // let template={
+          //   'template':'<h1>我是组件内容<h1>'
+          // }
       },
       mounted(){
-          let h2=this.$refs.title;
-          console.log(h2);
+          // let h2=this.$refs.title;
+          // console.log(h2);
       }
     }
 </script>

@@ -23,7 +23,7 @@
             <el-menu-item index="/login">登录</el-menu-item>
             <el-menu-item index="/layout/userEdit">修改个人信息</el-menu-item>
             <el-menu-item index="/layout/users">用户管理</el-menu-item>
-
+            <el-menu-item index="/layout/upload">组件测试</el-menu-item>
           </el-menu-item-group>
 
           <el-menu-item-group title="用户列表">
