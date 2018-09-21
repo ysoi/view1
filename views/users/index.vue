@@ -45,9 +45,12 @@
         <el-pagination
           background
           layout="prev, pager, next"
-          :total="1000"
-          current-change="changePage"
+          :total="count"
+          @current-change="changePage"
+          :page-size="5"
+
         >
+
         </el-pagination>
       </div>
 
@@ -60,16 +63,20 @@
       data() {
         return {
           tableData: [],
-          count:0,
-          page:0,
-          total:0
+          page:1,
+          count:0
         }
       },
 
       methods: {
         getData() {
-          this.$axios.get('/user').then(res => {
-            this.tableData = res.data;
+          this.$axios.get('/user',{pn:this.page,size:5}).then(res => {
+            if(res.code==200){
+              console.log(res);
+              this.tableData = res.data;
+              this.count=res.count;
+            }
+
             }
           )
         },
@@ -99,7 +106,8 @@
 
         },
         changePage(page){
-
+          this.page =page;
+          this.getData();
         }
       },
       created() {

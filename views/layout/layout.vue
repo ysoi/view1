@@ -20,6 +20,7 @@
             <template slot="title">用户管理</template>
 
             <el-menu-item index="/layout/index">首页</el-menu-item>
+            <el-menu-item index="/layout/addUser">添加用户</el-menu-item>
             <el-menu-item index="/login">登录</el-menu-item>
             <el-menu-item index="/layout/userEdit">修改个人信息</el-menu-item>
             <el-menu-item index="/layout/users">用户管理</el-menu-item>

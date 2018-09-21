@@ -8,8 +8,8 @@ const components= {
   index: ()=>  import('@/views/index/index'),
   users:()=>   import('@/views/users/index'),
   upload:()=>  import('@/views/upload/upload'),
-  userEdit:()=> import('@/views/userEdit/index')
-
+  userEdit:()=> import('@/views/userEdit/index'),
+  addUser:()=>import ('@/views/addUser/index')
 }
 export default new Router({
   routes: [
@@ -59,8 +59,15 @@ export default new Router({
             title:'修改个人信息'
           },
           component:components.userEdit
+        },
+        {
+          path:'addUser',
+          name:'addUser',
+          meta:{
+            title:'添加用户'
+          },
+          component:components.addUser
         }
-
       ]
     }
   ]
