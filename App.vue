@@ -24,4 +24,12 @@ export default {
     margin:0;
     padding:0;
   }
+  /*清除浮动*/
+  .clearfix::after{
+    content:'';
+    display:block;
+    clear:both;
+    width:0px;
+    height:0px;
+  }
 </style>

@@ -38,7 +38,7 @@
           >
             <template slot-scope="scope">
               <el-button @click="handleDetail" size="small" type="primary">查看详情</el-button>
-              <el-button @click="handleDelete(id)" size="small" type="danger" :id="scope.row.id">删除</el-button>
+              <el-button @click="handleDelete(scope.row._id)" size="small" type="danger" :id="scope.row._id">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -91,7 +91,7 @@
             type: 'warning',
             center: true
           }).then(() => {
-            this.$axios.pust('/user/delete', {userIds: [id]}).then(res => {
+            this.$axios.post('/user/delete', {userIds: [id]}).then(res => {
 
               this.$message.success(res.msg);
               this.getData();

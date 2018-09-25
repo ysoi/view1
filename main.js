@@ -6,7 +6,10 @@ import router from './router';
 import store from './store';
 import ElementUI  from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import {$axios} from './utils/'
+import {$axios} from './utils/';
+//全局下注册组件
+// import upload   from '@/components/upload';
+// Vue.component(upLoad,upload);
 Vue.use(ElementUI);
 Vue.prototype.$axios=$axios;
 
